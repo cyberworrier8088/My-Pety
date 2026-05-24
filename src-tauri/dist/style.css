@@ -54,6 +54,52 @@ body {
     background: transparent;
 }
 
+.titlebar {
+    width: 100%;
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 20px rgba(31, 47, 64, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: grab;
+}
+
+.titlebar:active {
+    cursor: grabbing;
+}
+
+.titlebar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #f7b955;
+    box-shadow: 0 0 0 3px rgba(247, 185, 85, 0.18);
+}
+
+.titlebar-text {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.titlebar-pill {
+    margin-left: auto;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #eef4f9;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
 .bubble-shell {
     width: 100%;
     min-height: 84px;
@@ -69,7 +115,6 @@ body {
     align-items: center;
     gap: 8px;
     margin-bottom: 8px;
-    cursor: grab;
 }
 
 .bubble-dot {

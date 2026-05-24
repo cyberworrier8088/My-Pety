@@ -22,13 +22,18 @@
 
     <!-- main container -->
     <main class="stage"> 
+      <div class="titlebar" data-tauri-drag-region title="Drag window here">
+        <span class="titlebar-dot"></span>
+        <span class="titlebar-text">Moxi</span>
+        <span class="titlebar-pill">Drag window</span>
+      </div>
 
       <!-- bubble shell -->
       <section class="bubble-shell" aria-label="Pet message panel">
-        <div class="bubble-header" data-tauri-drag-region title="Drag window here top">
+        <div class="bubble-header">
           <span class="bubble-dot"></span>
           <span class="bubble-title">Moxi</span>
-          <span class="drag-pill" data-tauri-drag-region>Drag window</span>
+          <span class="drag-pill">Message</span>
         </div>
         <h2 id="response">Click the pet to wave. Drag from the top bar.</h2>
       </section>
