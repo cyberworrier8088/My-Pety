@@ -19,9 +19,25 @@
 
   </head>
   <body>
+    <div id="login-modal" class="modal">
 
+      <div class="modal-content">
+
+        <h2>Login to My-Pety</h2>
+
+        <input type="password" placeholder="Enter pls" id="password">
+
+        <button id="login-btn">Login</button>
+
+        <p id="login-status"></p>
+      </div>
+
+    </div>
+
+
+    
     <!-- main container -->
-    <main class="stage"> 
+    <main class="stage" id="app" style="display: none;"> 
       <div class="titlebar" data-tauri-drag-region title="Drag window here">
         <span class="titlebar-dot"></span>
         <span class="titlebar-text">Moxi</span>

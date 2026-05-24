@@ -25,4 +25,4 @@ tauri = { version = "2.11.2" }
 tauri-plugin-log = "2"
 reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
-screenshots = "0.8"
+sysinfo = "0.32"

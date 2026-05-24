@@ -270,6 +270,32 @@ body {
 }
 
 
+.modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 9999;
+}
+
+.modal-content {
+    background: wheat;
+    border-radius: 12px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    min-width: 250px;
+}
+
 
 
 /* 

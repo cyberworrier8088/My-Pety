@@ -12,6 +12,39 @@ const input = document.getElementById("input");
 const submit = document.getElementById("submit");
 const response = document.getElementById("response");
 
+const loginModal = document.getElementById("login-modal");
+const loginBtn = document.getElementById("login-btn");
+const passwordInput = document.getElementById("password");
+const loginStatus = document.getElementById("login-status");
+const app = document.getElementById("app");
+
+if (loginModal) {
+  loginModal.style.display = "flex";
+}
+
+
+// password
+loginBtn?.addEventListener("click", async () => {
+  const password = passwordInput.value;
+
+  try {
+    const ok = await window.__TAURI__.core.invoke(
+      "check_password",
+      { password }
+    );
+
+    if (ok) {
+      loginModal.style.display = "none";
+      app.style.display = "block";
+    } else {
+      loginStatus.textContent = "Wrong password";
+    }
+  } catch (err) {
+    loginStatus.textContent = `Error: ${err}`;
+  }
+});
+
+
 // timer for resetting pet animation
 let resetTimer = null;
 
