@@ -1,0 +1,58 @@
+<!--
+  This HTML file is the entry point for the Tauri desktop app.
+
+  Enjoy!
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My-Pety</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+
+
+  </head>
+  <body>
+
+    <!-- main container -->
+    <main class="stage"> 
+
+      <!-- bubble shell -->
+      <section class="bubble-shell" aria-label="Pet message panel">
+        <div class="bubble-header" data-tauri-drag-region title="Drag window here top">
+          <span class="bubble-dot"></span>
+          <span class="bubble-title">Moxi</span>
+          <span class="drag-pill" data-tauri-drag-region>Drag window</span>
+        </div>
+        <h2 id="response">Click the pet to wave. Drag from the top bar.</h2>
+      </section>
+      
+      <!-- my pety image -->
+      <div class="pet" aria-label="Pet" title="Click pet to wave">
+        <img src="assets/moxi-idle.gif" alt="Moxi pet" id="pet-image" />
+      </div>
+      
+      <!-- Chatwindow -->
+      <div class="chat">
+        <label class="chat-label" for="input">Ask Moxi</label>
+        <div class="chat-row">
+          <input type="text" placeholder="Type your message here..." id="input" />
+          <button id="submit">Send</button>
+        </div>
+      </div>
+
+
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+<!-- end of file -->
