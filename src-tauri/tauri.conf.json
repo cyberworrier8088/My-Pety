@@ -2,11 +2,11 @@
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "My-Pety",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.mypety.app",
   "build": {
     "frontendDist": "dist",
-    "beforeDevCommand": "none",
-    "beforeBuildCommand": "none"
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
   },
   "app": {
     "withGlobalTauri": true,

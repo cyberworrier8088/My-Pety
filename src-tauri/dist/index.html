@@ -19,16 +19,30 @@
 
   </head>
   <body>
+    <div id="setup-screen" class="modal">
+      <div class="modal-content">
+        <h2>Setup My-Pety</h2>
+        <input id="setup-name" placeholder="Your name" />
+        <input id="setup-pet-name" placeholder="Pet name" />
+        <input id="setup-pet-type" placeholder="Pet type" />
+        <input id="setup-api-key" placeholder="Hack Club API key" />
+        <input id="setup-password" type="password" placeholder="Create password" />
+        <button id="save-config">Save Setup</button>
+        <p id="setup-status"></p>
+      </div>
+    </div>
+
+
+
+
+    <!-- user login modal -->
     <div id="login-modal" class="modal">
 
       <div class="modal-content">
 
         <h2>Login to My-Pety</h2>
-
-        <input type="password" placeholder="Enter pls" id="password">
-
+        <input type="password" placeholder="Enter password" id="login-password" />
         <button id="login-btn">Login</button>
-
         <p id="login-status"></p>
       </div>
 
@@ -40,7 +54,7 @@
     <main class="stage" id="app" style="display: none;"> 
       <div class="titlebar" data-tauri-drag-region title="Drag window here">
         <span class="titlebar-dot"></span>
-        <span class="titlebar-text">Moxi</span>
+        <span class="titlebar-text">My-Pety</span>
         <span class="titlebar-pill">Drag window</span>
       </div>
 
@@ -48,10 +62,10 @@
       <section class="bubble-shell" aria-label="Pet message panel">
         <div class="bubble-header">
           <span class="bubble-dot"></span>
-          <span class="bubble-title">Moxi</span>
+          <span class="bubble-title">My-Pety</span>
           <span class="drag-pill">Message</span>
         </div>
-        <h2 id="response">Click the pet to wave. Drag from the top bar.</h2>
+        <h2 id="response">Ask something, open a site, or click the pet to wave.</h2>
       </section>
       
       <!-- my pety image -->
@@ -61,9 +75,9 @@
       
       <!-- Chatwindow -->
       <div class="chat">
-        <label class="chat-label" for="input">Ask Moxi</label>
+        <label class="chat-label" for="input">Ask My-Pety</label>
         <div class="chat-row">
-          <input type="text" placeholder="Type your message here..." id="input" />
+          <input type="text" placeholder="Try: time, open youtube, search rust" id="input" />
           <button id="submit">Send</button>
         </div>
       </div>
