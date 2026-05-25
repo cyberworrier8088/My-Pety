@@ -4,6 +4,8 @@ mod readertool;
 mod sysinfo;
 mod timetool;
 mod webtool;
+mod remindertool;
+mod memory;
 
 
 use crate::config::config_exists;
@@ -62,7 +64,11 @@ async fn ask_hackclub_ai(prompt: String) -> Result<String, String> {
         return Ok(format!("The current time is {}.", result));
     }
 
-    if lower.contains("ram") || lower.contains("memory") || lower.contains("system info") {
+    if lower.contains("ram")
+        || lower.contains("system info")
+        || lower.contains("system memory")
+        || lower.contains("memory usage")
+    {
         return Ok(sysinfo::get_system_info());
     }
 
@@ -72,6 +78,39 @@ async fn ask_hackclub_ai(prompt: String) -> Result<String, String> {
     if lower.contains("close") || lower.contains("exit") || lower.contains("quit") {
         return Ok("CLOSE_APP".to_string());
     }
+    if lower.starts_with("remind me") {
+
+    let parts: Vec<&str> =
+        original_prompt
+            .splitn(4, ' ')
+            .collect();
+
+    if parts.len() >= 4 {
+
+        let seconds =
+            parts[2]
+                .parse::<u64>()
+                .unwrap_or(10);
+
+        let message =
+            parts[3].to_string();
+
+        remindertool::create_reminder(
+            seconds,
+            message.clone()
+        );
+
+        return Ok(format!(
+            "Reminder set: {} seconds",
+            seconds
+        ));
+    } else {
+        return Err(
+            "Usage: remind me 60 study rust"
+                .to_string()
+        );
+    }
+}
 
     let mut final_prompt = original_prompt.clone();
 
@@ -90,9 +129,107 @@ async fn ask_hackclub_ai(prompt: String) -> Result<String, String> {
         );
     }
     if lower.contains("read") || lower.contains("file") {
-        let file_path = original_prompt.split(" ").nth(1).unwrap();
-        return Ok(readertool::read_file(file_path.to_string()));
+        if let Some(file_path) = original_prompt.split_whitespace().nth(1) {
+    let file_content = readertool::read_file(file_path.to_string());
+
+    final_prompt = format!(
+        "File content:\n{}\n\nUser question:\n{}",
+        file_content,
+        original_prompt
+    );
+} else {
+    return Err(
+        "Please provide a file path."
+            .to_string()
+    );
+}
     }
+
+
+
+
+    if lower.starts_with("my favorite language is ") {
+
+    let value = original_prompt.trim_start_matches(
+            "my favorite language is "
+        )
+        .to_string();
+
+    memory::save_memory(
+        "favorite".into(),
+        value.clone()
+    )?;
+
+    return Ok(format!(
+        "I'll remember that! {}",
+        value
+    ));
+}
+
+    if lower.contains("favorite language") {
+
+    if let Some(favorite) =
+        memory::get_memory(
+            "favorite"
+        )
+    {
+        return Ok(format!(
+            "Your favorite {}",
+            favorite
+        ));
+    }
+}
+
+    let memories =
+    memory::load_memories();
+
+let memory_text =
+    memories
+        .iter()
+        .map(|(k,v)| {
+            format!(
+                "{}: {}",
+                k,
+                v
+            )
+        })
+        .collect::<Vec<_>>()
+        .join("\n");
+
+
+
+        if lower.starts_with(
+    "remember "
+) {
+
+    let text =
+        original_prompt
+            .trim_start_matches(
+                "remember "
+            );
+
+    if let Some((key,value))
+        = text.split_once('=')
+    {
+        memory::save_memory(
+            key.trim().into(),
+            value.trim().into()
+        )?;
+
+        return Ok(
+            "Memory saved!"
+                .to_string()
+        );
+    }
+}
+
+
+    if lower == "show memories" {
+
+    let memories = memory::load_memories();
+
+    return Ok(format!("{:#?}", memories));
+}
 
     let name = config::load_name().unwrap_or_else(|_| "friend".to_string());
     let pet_name = config::pet_name().unwrap_or_else(|_| "Moxi".to_string());
@@ -113,6 +250,10 @@ async fn ask_hackclub_ai(prompt: String) -> Result<String, String> {
                     "Respond like a friendly {}. Use a short, cute style.",
                     pet_type
                 ),
+            },
+            ChatMessage {
+                role: "system".into(),
+                content: format!("Memories:\n{}", memory_text),
             },
             ChatMessage {
                 role: "system".into(),
@@ -158,6 +299,14 @@ fn check_password(password: String) -> Result<bool, String> {
     Ok(password == saved)
 }
 
+
+#[tauri::command]
+fn close_app(app: tauri::AppHandle) -> Result<String, String> {
+    app.exit(0);
+    Ok("Closing application...".to_string())
+}
+
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     if cfg!(debug_assertions) {
@@ -179,8 +328,3 @@ pub fn run() {
 
 
 
-#[tauri::command]
-fn close_app(app: tauri::AppHandle) -> Result<String, String> {
-    app.exit(0);
-    Ok("Closing application...".to_string())
-}

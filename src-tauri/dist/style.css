@@ -33,12 +33,10 @@ body {
     margin: 0;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.0);
-}
-
-body {
     display: grid;
     place-items: center;
     font-family: var(--font-ui);
+    cursor: url("assets/pointer.png") 6 6, auto;
 }
 
 .stage {
@@ -70,7 +68,7 @@ body {
 }
 
 .titlebar:active {
-    cursor: grabbing;
+    cursor: url("assets/grabbing.png") 12 12, auto;
 }
 
 .titlebar-dot {
@@ -166,6 +164,7 @@ body {
     touch-action: none;
 }
 
+
 .pet::before {
     content: "";
     position: absolute;
@@ -260,6 +259,20 @@ body {
     cursor: wait;
 }
 
+
+input,
+textarea {
+    user-select: text;
+    cursor: text;
+}
+
+#response {
+    max-height: 50px;
+    overflow-y: auto;
+}
+
+
+
 @keyframes float {
     0%,
     100% {
@@ -282,6 +295,8 @@ body {
     background: rgba(0, 0, 0, 0.5);
 
     z-index: 9999;
+
+    
 }
 
 .modal-content {
