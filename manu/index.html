@@ -3,56 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My-Pety Manual</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Introduction</h1>
+    <div class="container">
+        <div class="card">
+            <h1>Introduction</h1>
+            <p>
+                My-Pety is an AI-powered desktop pet and personal assistant built with Rust and Tauri.
+                It can chat, search the web, remember information, open websites, manage reminders,
+                and assist with everyday tasks.
+            </p>
+            <p>
+                My-Pety is currently in active development, and some features are still experimental.
+                Thank you for your patience and support while the project grows.
+            </p>
+        </div>
 
-<p>
-    My-Pety is an AI-powered desktop pet and personal assistant built with Rust and Tauri.
-    It can chat, search the web, remember information, open websites, manage reminders,
-    and assist with everyday tasks.
-</p>
+        <div class="card">
+            <h2>Features</h2>
+            <ul>
+                <li>AI chat assistant</li>
+                <li>Open web search using command</li>
+                <li>Web search with browser for latest information</li>
+                <li>Real time lookup for latest information</li>
+                <li>File reading and summarization</li>
+                <li>Running applications viewer</li>
+                <li>System information viewer</li>
+                <li>Memory system (important for context)</li>
+                <li>Password protection</li>
+                <li>Reminder system</li>
+                <li>First time setup configuration</li>
+                <li>Animation desktop pet friend</li>
+                <li>Custom cursor support</li>
+                <li>Dragging desktop window support</li>
+                <li>Transparent window support</li>
+            </ul>
+        </div>
 
-<p>
-    My-Pety is currently in active development, and some features are still experimental.
-    Thank you for your patience and support while the project grows.</p>
+        <div class="card">
+            <h2>Manual & Commands</h2>
+            <p>Type these commands directly into the chat input to control the pet or your system:</p>
+            <ul>
+                <li><code>time</code> — Show current time</li>
+                <li><code>search rust</code> — Search the web for latest info</li>
+                <li><code>open youtube</code> — Open any website in your browser</li>
+                <li><code>read notes.txt</code> — Read and summarize a local file</li>
+                <li><code>system info</code> — Show RAM and system memory usage</li>
+                <li><code>open apps</code> — List currently running applications</li>
+                <li><code>open app notepad</code> — Open any desktop app (e.g. notepad, calc, mspaint)</li>
+                <li><code>volume 50</code> — Set master system volume (0-100)</li>
+                <li><code>brightness 60</code> — Set system screen brightness (0-100)</li>
+                <li><code>battery</code> — Show your current battery charge status</li>
+                <li><code>screen</code> or <code>screenshot</code> — Capture your desktop and analyze it with AI vision</li>
+                <li><code>remember hobby = coding</code> — Save key-value facts into memory</li>
+                <li><code>show memories</code> — View all saved memories</li>
+                <li><code>favorite language</code> — Recall saved favorite language memory</li>
+                <li><code>remind me 60 study rust</code> — Create a reminder timer in seconds</li>
+                <li><code>close</code> — Close the My-Pety application</li>
+            </ul>
+        </div>
 
-    <h2>Features</h2>
-    <ul>
-        <li>AI chat assistant</li>
-        <li>Open web search using command</li>
-        <li>Web search with browser for latest information</li>
-        <li>Real time lookup for latest information</li>
-        <li>File reading and summarization</li>
-        <li>Running applications viewer</li>
-        <li>System information viewer</li>
-        <li>Memory system (important for context)</li>
-        <li>Password mused protection</li>
-        <li>Reminder system</li>
-        <li>First time setup configuration</li>
-        <li>Animation deasktop pet frend</li>
-        <li>Custom cursor support</li>
-        <li>Dragging desktop window support</li>
-        <li>Transparent window support</li>
-    </ul>
+        <div class="card">
+            <h2>Demo Video</h2>
+            <p>Watch a quick demonstration of My-Pety in action:</p>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border);">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZKy0A1vtWOY?si=Oof8059ul8kpVc--" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 12px;"></iframe>
+            </div>
+            <p style="text-align: center; margin-top: 15px; margin-bottom: 0;">
+                <a href="https://www.youtube.com/watch?v=ZKy0A1vtWOY" target="_blank" style="color: var(--accent); font-weight: bold; text-decoration: none;">👉 Click here to watch directly on YouTube if the video player shows a local file restriction error!</a>
+            </p>
+        </div>
 
-
-    <h3>Manual</h3>
-
-<ul>
-    <li><code>time</code> — Show current time</li>
-    <li><code>search rust</code> — Search the web</li>
-    <li><code>open youtube</code> — Open a website</li>
-    <li><code>read notes.txt</code> — Read a file</li>
-    <li><code>system info</code> — Show RAM and system information</li>
-    <li><code>open apps</code> — List running applications</li>
-    <li><code>remember hobby = coding</code> — Save memory</li>
-    <li><code>show memories</code> — Show saved memories</li>
-    <li><code>remind me 60 study rust</code> — Create a reminder</li>
-    <li><code>close</code> — Close My-Pety</li>
-    <li><code>Etc</code> — Show etc information</li>
-</ul>
+        <footer>
+            <p>Thank you for checking my project :)</p>
+        </footer>
+    </div>
 </body>
 </html>
