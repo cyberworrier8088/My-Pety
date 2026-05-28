@@ -1,5 +1,8 @@
-use std::fs;
+// this module use for reading. ai can read this text
 
-pub fn read_file(path: String) -> String {
-    fs::read_to_string(path).unwrap()
+
+use std::fs; // import fs module
+
+pub fn read_file(path: String) -> String { // read file func
+    fs::read_to_string(path).unwrap() // read file
 }

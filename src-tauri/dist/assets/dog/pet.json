@@ -1,0 +1,7 @@
+{
+  "id": "pomeranian-dog",
+  "displayName": "pomeranian dog",
+  "description": "A fluffy white Pomeranian with glossy black eyes, tiny rounded ears, a dark button nose, and a colorful cartoon bandana.",
+  "spritesheetPath": "spritesheet.webp",
+  "kind": "animal"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "sanhua-realcat",
+  "displayName": "なな",
+  "description": "A highly realistic calico cat pet based on the provided photos.",
+  "spritesheetPath": "spritesheet.webp",
+  "kind": "animal"
+}

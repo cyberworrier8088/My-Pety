@@ -19,72 +19,69 @@
 
   </head>
   <body>
-
-    
     <div id="setup-screen" class="modal">
-      <div class="modal-content">
-        <h2>Setup My-Pety</h2>
+      <div class="modal-content auth-card">
+        <p class="eyebrow">First Time Setup</p>
+        <h2>Build Your Desk Buddy</h2>
+        <p class="auth-copy">Add your details once, then log in normally any time you open the app.</p>
         <input id="setup-name" placeholder="Your name" />
         <input id="setup-pet-name" placeholder="Pet name" />
         <input id="setup-pet-type" placeholder="Pet type" />
+        <select id="setup-pet-asset" aria-label="Pet look">
+          <option value="ferris">Ferris</option>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+        </select>
         <input id="setup-api-key" placeholder="Hack Club API key" />
-        <input id="setup-password" type="password" placeholder="Create password" />
+        <input id="setup-password" type="password" placeholder="Create password (min 8 characters)" minlength="8" />
         <button id="save-config">Save Setup</button>
-        <p id="setup-status"></p>
+        <p id="setup-status">Use a password with at least 8 characters.</p>
       </div>
     </div>
 
-
-
-
     <!-- user login modal -->
     <div id="login-modal" class="modal">
-
-      <div class="modal-content">
-
+      <div class="modal-content auth-card">
+        <p class="eyebrow">Welcome Back</p>
         <h2>Login to My-Pety</h2>
+        <p class="auth-copy">Unlock your pet and start chatting.</p>
         <input type="password" placeholder="Enter password" id="login-password" />
         <button id="login-btn">Login</button>
         <p id="login-status"></p>
       </div>
-
     </div>
 
-
-    
     <!-- main container -->
-    <main class="stage" id="app" style="display: none;"> 
-      <div class="titlebar" data-tauri-drag-region title="Drag window here">
-        <span class="titlebar-dot"></span>
-        <span class="titlebar-text">My-Pety</span>
-        <span class="titlebar-pill">Drag window</span>
+    <main class="stage" id="app" style="display: none;">
+      <div class="top-drag-zone" title="Drag window here">
+        <div class="titlebar">
+          <span class="titlebar-dot"></span>
+          <span class="titlebar-text">My-Pety</span>
+          <span class="titlebar-pill">Desk Buddy</span>
+        </div>
+
+        <section class="bubble-shell" aria-label="Pet message panel">
+          <div class="bubble-header">
+            <span class="bubble-dot"></span>
+            <span class="bubble-title">My-Pety</span>
+            <span class="drag-pill">Online</span>
+          </div>
+          <h2 id="response">Ask something, open a site, save a memory, or click the pet to wave.</h2>
+        </section>
       </div>
 
-      <!-- bubble shell -->
-      <section class="bubble-shell" aria-label="Pet message panel">
-        <div class="bubble-header">
-          <span class="bubble-dot"></span>
-          <span class="bubble-title">My-Pety</span>
-          <span class="drag-pill">Message</span>
-        </div>
-        <h2 id="response">Ask something, open a site, or click the pet to wave.</h2>
-      </section>
-      
-      <!-- my pety image -->
       <div class="pet" aria-label="Pet" title="Click pet to wave">
-        <img src="assets/moxi-idle.gif" alt="Moxi pet" id="pet-image" />
+        <div class="pet-sprite" id="pet-sprite" role="img" aria-label="Moxi pet"></div>
       </div>
-      
-      <!-- Chatwindow -->
+
       <div class="chat">
         <label class="chat-label" for="input">Ask My-Pety</label>
+        <p class="chat-hint">Try: `time`, `open youtube`, `show memories`, `battery`</p>
         <div class="chat-row">
           <input type="text" placeholder="Try: time, open youtube, search rust" id="input" />
           <button id="submit">Send</button>
         </div>
       </div>
-
-
     </main>
     <script src="script.js"></script>
   </body>
