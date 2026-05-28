@@ -28,7 +28,7 @@ My-Pety is not just a simple animation on your screen, it is a smart helper that
 ### Prerequisites
 To run this project, you need to have:
 1. **Rust** installed on your computer.
-2. **Windows** (since many of the low-level system integrations like volume and brightness are made with PowerShell and C# COM interfaces).
+2. **Windows** (since many of the low-level system integrations like volume and brightness are made with PowerShell and C# COM interfaces). but you can use other os
 
 ### Running the App
 Since this app is built purely with Rust and Tauri (without complex Node.js dependencies), you can run it directly using Cargo!
@@ -40,6 +40,11 @@ Since this app is built purely with Rust and Tauri (without complex Node.js depe
    cd src-tauri
    cargo run
    ```
+
+
+or 
+download the bin from github release and install it by your windows own setup application. [demo_app_download](https://github.com/cyberworrier8088/My-Pety/releases/download/Demo/web_app.exe)
+
 4. The first time you open the app, it will show a setup screen where you can customize your pet's name, choose your pet asset (Ferris, dog, or cat), paste your Hack Club AI key, and set a password.
 
 *Note: Please check the [m.md](file:///c:/Users/Muhammad_Nabhan_nk/Downloads/Project/My-Pety/m.md) file to read my detailed journal, design struggles, failures, and rabbit holes!*
