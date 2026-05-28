@@ -48,3 +48,10 @@ download the bin from github release and install it by your windows own setup ap
 4. The first time you open the app, it will show a setup screen where you can customize your pet's name, choose your pet asset (Ferris, dog, or cat), paste your Hack Club AI key, and set a password.
 
 *Note: Please check the [m.md](file:///c:/Users/Muhammad_Nabhan_nk/Downloads/Project/My-Pety/m.md) file to read my detailed journal, design struggles, failures, and rabbit holes!*
+
+
+
+## demo
+
+
+![video](https://www.youtube.com/watch?v=ZKy0A1vtWOY)
