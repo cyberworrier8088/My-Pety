@@ -1,26 +1,25 @@
-use std::process::Command;
+use std::process::Command; // importing command module
 
-pub fn get_battery_info() -> String {
-    let output = Command::new("powershell")
-        .args([
+pub fn get_battery_info() -> String { // getting battery info
+    let output = Command::new("powershell").args([ // using powershell command
             "-Command",
             "$b=Get-CimInstance Win32_Battery; \
              Write-Output $b.EstimatedChargeRemaining; \
              Write-Output $b.BatteryStatus"
-        ])
-        .output();
+        ]) // executing command
+        .output(); // getting output
 
     match output {
         Ok(output) => {
-            let text = String::from_utf8_lossy(&output.stdout);
+            let text = String::from_utf8_lossy(&output.stdout); // getting output as string
 
-            let mut lines = text.lines();
+            let mut lines = text.lines(); // splitting output into lines
 
-            let battery = lines.next().unwrap_or("Unknown").trim();
+            let battery = lines.next().unwrap_or("Unknown").trim(); // getting battery percentage
 
-            let status_code = lines.next().unwrap_or("0").trim();
+            let status_code = lines.next().unwrap_or("0").trim(); // getting battery status code
 
-            let status = match status_code {
+            let status = match status_code { // matching battery status code
                 "1" => "Discharging",
                 "2" => "Charging",
                 "3" => "Fully Charged",
@@ -34,14 +33,10 @@ pub fn get_battery_info() -> String {
                 _ => "Unknown",
             };
 
-            format!(
-                "🔋 Battery: {}%\n⚡ Status: {}",
-                battery,
-                status
-            )
+            format!("🔋 Battery: {}%\n⚡ Status: {}", battery, status) // formatting battery info
         }
         Err(_) => {
-            "Battery information unavailable".to_string()
+            "Battery information unavailable".to_string() // returning error message
         }
     }
 }

@@ -38,3 +38,10 @@ argon2 = "0.5"
 password-hash = "0.5"
 rand_core = { version = "0.6", features = ["getrandom"] }
 
+[profile.release]
+opt-level = "z"     # "z" optimizes for smallest binary size; use "3" for maximum execution speed
+lto = true          # Enable Link-Time Optimization (LTO) to optimize across all dependencies
+codegen-units = 1   # Reduce parallel compilation units to 1 for more aggressive LLVM optimizations
+panic = "abort"     # Remove stack unwinding code on panic, which reduces binary size
+strip = true        # Automatically strip debug symbols from the compiled binary
+

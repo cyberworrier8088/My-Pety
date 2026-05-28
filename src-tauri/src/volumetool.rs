@@ -1,13 +1,14 @@
-use std::process::Command;
+use std::process::Command; // command module
 
-pub fn set_volume(level: u8) -> Result<String, String> {
+pub fn set_volume(level: u8) -> Result<String, String> { // set volume function
     if level > 100 {
-        return Err("Volume must be 0-100".to_string());
+        return Err("Volume must be 0-100".to_string()); // error if level is not 0-100
     }
 
-    let scalar = level as f32 / 100.0;
+    let scalar = level as f32 / 100.0; // convert level to float
 
-    let script = format!(
+    // this code is web used to serach and finded control volume
+        let script = format!(
         r#"
 $code = @"
 using System;
@@ -69,26 +70,21 @@ Add-Type -TypeDefinition $code -Language CSharp
 "#
     );
 
-    let output = Command::new("powershell")
-        .args([
-            "-NoProfile",
-            "-NonInteractive",
-            "-ExecutionPolicy",
-            "Bypass",
-            "-Command",
-            &script,
-        ])
+    let output = Command::new("powershell").args(["-NoProfile","-NonInteractive","-ExecutionPolicy","Bypass","-Command",&script]) // run powershell command
         .output()
-        .map_err(|e| e.to_string())?;
+        .map_err(|e| e.to_string())?; // map error
 
-    if !output.status.success() {
-        let error = String::from_utf8_lossy(&output.stderr).trim().to_string();
-        return Err(if error.is_empty() {
+    if !output.status.success() { // check if command is successful
+
+        let error = String::from_utf8_lossy(&output.stderr).trim().to_string(); // get error message
+
+
+        return Err(if error.is_empty() { // if error is empty
             "Could not set system volume.".to_string()
         } else {
             error
         });
     }
 
-    Ok(format!("Volume set to {}%", level))
+    Ok(format!("Volume set to {}%", level)) // return success volume msg
 }
